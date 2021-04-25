@@ -7,7 +7,6 @@ bot.on('ready', () => { console.log(bot.user.tag + " is online"); });
 
 bot.on('message', msg => {
 	if (!msg.guild) return;
-	if (!msg.channel.name.includes("meme")) return;
 	if (!msg.content.includes("https://twitter.com") && !msg.content.includes("https://t.co")) return;
 	downloadVideo(msg);
 });
