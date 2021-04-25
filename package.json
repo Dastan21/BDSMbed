@@ -1,0 +1,24 @@
+{
+  "name": "videoreupload",
+  "version": "1.0.0",
+  "description": "Reuploads videos from link to Discord.",
+  "main": "bot.js",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "video-url-link": "^0.1.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dastan21/VideoReupload.git"
+  },
+  "author": "Dastan21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dastan21/VideoReupload/issues"
+  },
+  "homepage": "https://github.com/Dastan21/VideoReupload#readme"
+}
