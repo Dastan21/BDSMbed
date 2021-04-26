@@ -21,7 +21,6 @@ function downloadVideo(msg) {
 		const video = info.variants.sort((a, b) => b.bitrate - a.bitrate)[0];
 		msg.channel.send(video.url).catch(()=>{});
 	});
-	msg.delete().catch(()=>{});
 }
 
 bot.login(config.token);
