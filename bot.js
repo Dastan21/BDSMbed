@@ -17,10 +17,8 @@ function downloadVideo(msg) {
 	for (const a of args) if (a.startsWith("https://twitter.com") || a.startsWith("https://t.co")) { url = a; break; }
 	if (!url) return;
 	videoUrlLink.twitter.getInfo(url, {}, (error, info) => {
-		console.log(info.variants)
 		if (error) return console.error(error);
 		const video = orderJsonArray(info.variants)[3];
-		console.log(video)
 		msg.channel.send(video.url).catch(()=>{});
 	});
 }
