@@ -19,7 +19,6 @@ function downloadVideo(msg) {
 	videoUrlLink.twitter.getInfo(url, {}, (error, info) => {
 		if (error) return console.error(error);
 		const video = orderJsonArray(info.variants)[0];
-		console.log(video)
 		msg.channel.send(video.url).catch(()=>{});
 	});
 }
