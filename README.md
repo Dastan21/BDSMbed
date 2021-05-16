@@ -1,4 +1,4 @@
-# VideoReupload <img src="icon.png" alt="Bot logo" width="32" style="border-radius: 50%;">
+# TwitterReupload <img src="icon.png" alt="Bot logo" width="32" style="border-radius: 50%;">
 
 Reuploads Twitter videos from link to Discord.
 
