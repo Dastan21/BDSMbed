@@ -2,7 +2,7 @@ const videoUrlLink = require('video-url-link');
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 const config = require('./config');
-
+  
 bot.on('ready', () => { console.log(bot.user.tag + " is online"); });
 
 bot.on('message', msg => {
@@ -18,9 +18,23 @@ function downloadVideo(msg) {
 	if (!url) return;
 	videoUrlLink.twitter.getInfo(url, {}, (error, info) => {
 		if (error) return console.error(error);
-		const video = info.variants.sort((a, b) => b.bitrate - a.bitrate)[0];
+		const video = orderJsonArray(info.variants)[3];
 		msg.channel.send(video.url).catch(()=>{});
 	});
 }
 
 bot.login(config.token);
+
+function orderJsonArray(json){
+	return json.sort(sortByProperty("bitrate"));
+}
+
+function sortByProperty(property){  
+	return function(a,b){  
+	   if(a[property] > b[property])  
+		  return 1;  
+	   else if(a[property] < b[property])  
+		  return -1;  
+	   return 0;  
+	}  
+ }
