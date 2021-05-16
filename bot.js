@@ -28,8 +28,7 @@ function downloadVideo(msg) {
 bot.login(config.token);
 
 function orderJsonArray(json){
-	json = json.sort(sortByProperty("bitrate"));
-	return json
+	return json.sort(sortByProperty("bitrate"));
 }
 
 function sortByProperty(property){  
