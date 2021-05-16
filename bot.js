@@ -18,7 +18,7 @@ function downloadVideo(msg) {
 	if (!url) return;
 	videoUrlLink.twitter.getInfo(url, {}, (error, info) => {
 		if (error) return console.error(error);
-		const video = orderJsonArray(info.variants)[3];
+		const video = orderJsonArray(info.variants)[0];
 		msg.channel.send(video.url).catch(()=>{});
 	});
 }
@@ -26,15 +26,16 @@ function downloadVideo(msg) {
 bot.login(config.token);
 
 function orderJsonArray(json){
+	json = json.filter(e => !e.url.includes("m3u8"))
 	return json.sort(sortByProperty("bitrate"));
 }
 
 function sortByProperty(property){  
 	return function(a,b){  
-	   if(a[property] > b[property])  
-		  return 1;  
-	   else if(a[property] < b[property])  
-		  return -1;  
-	   return 0;  
+		if(a[property] < b[property])  
+			return 1;  
+		else if(a[property] > b[property])  
+			return -1;  
+		return 0;  
 	}  
  }
