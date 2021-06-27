@@ -13,7 +13,6 @@ bot.on('ready', () => console.log(bot.user.tag + " is online"));
 bot.on('message', msg => {
 	if (!msg.guild) return;
 	if (!Object.keys(modules)) return;
-	if (msg.guild.id !== "763510590718476298") return; // DEBUG
 
 	const args = msg.content.split(/\s/gm);
 	for (const module_name in modules)
