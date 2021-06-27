@@ -1,24 +1,28 @@
 {
-  "name": "videoreupload",
-  "version": "1.0.0",
-  "description": "Reuploads videos from link to Discord.",
+  "name": "bdsmbed",
+  "version": "2.0.0",
+  "description": "Send/upload videos from differents sources which are not embeded in Discord",
   "main": "bot.js",
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.3",
+    "dotenv": "^10.0.0",
+    "fbdl-core": "^1.0.2",
+    "fs": "0.0.1-security",
     "video-url-link": "^0.1.5"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node bot.js"
   },
+  "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dastan21/VideoReupload.git"
+    "url": "git+https://github.com/Dastan21/BDSMbed.git"
   },
   "author": "Dastan21",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/Dastan21/VideoReupload/issues"
+    "url": "https://github.com/Dastan21/BDSMbed/issues"
   },
-  "homepage": "https://github.com/Dastan21/VideoReupload#readme"
+  "homepage": "https://github.com/Dastan21/BDSMbed#readme"
 }
