@@ -1,7 +1,6 @@
 const axios = require('axios');
 const fbdl = require('fbdl-core');
 const links = ["https://www.facebook.com", "https://m.facebook.com"];
-const filter = "/videos/";
 
 function getVideo(url, size_limit) {
 	return new Promise((resolve, reject) => {
