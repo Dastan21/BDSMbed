@@ -8,8 +8,9 @@ function getVideo(url) {
 		url = url.join('/');
 		axios.get(url).then(res => {
 			const video = res?.data[0]?.data?.children[0]?.data?.secure_media?.reddit_video?.fallback_url;
-			resolve(video ? { url: video } : { error: "`Reddit` : video could not be loaded." });
-		}).catch(() => resolve({ error: "`Reddit` : video could not be loaded." }));
+			if (!video) return reject();
+			resolve({ url: video });
+		}).catch(() => reject());
 	});
 }
 

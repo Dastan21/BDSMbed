@@ -1,7 +1,7 @@
 const axios = require('axios');
 const links = ["https://www.instagram.com"];
 
-function getVideo(url, size_limit, size_limit_int) {
+function getVideo(url, size_limit) {
 	return new Promise((resolve, reject) => {
 		url = url.split("?").shift() + "?__a=1"
 		axios.get(url).then(res => {
@@ -12,10 +12,10 @@ function getVideo(url, size_limit, size_limit_int) {
 			const params = {};
 			args.forEach(e => params[e[0]] = e[1]);
 			axios.post(process.env.INSTAGRAM_API + "video/" + id, { ...params }, { responseType: 'arraybuffer' }).then(video_data => {
-				if (video_data.data.length > size_limit) return resolve({ error: `\`Instagram\` : video size it too large (> ${size_limit_int}MB).` });
+				if (video_data.data.length > size_limit) return reject();
 				resolve({ upload: true, data: video_data.data, name: (id || "instagram.mp4").split('/').pop() });
-			}).catch(() => resolve({ error: "`Instagram` : video could not be loaded." }));
-		}).catch(err => resolve({ error: err.response.status === 404 ? "`Instagram` : video not found." : "`Instagram` : video could not be loaded." }));
+			}).catch(() => reject());
+		}).catch(() => reject());
 	});
 }
 
