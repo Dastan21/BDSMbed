@@ -18,12 +18,10 @@ bot.on('message', msg => {
 		for (const link of modules[module_name]?.links)
 			for (const arg of args)
 				if (arg.startsWith(link) && !modules[module_name].disabled) {
-					msg.channel.send("Checking `" + module_name + "` link...").then(msg => {
-						modules[module_name]?.getVideo(arg, SIZE_LIMIT[msg.guild.premiumTier]).then(video => {
-							if (video.upload) msg.channel.send("", new Discord.MessageAttachment(video.data, video.name)).then(() => msg.delete().catch(() => {})).catch(() => {});
-							else msg.channel.send(video.url).then(() => msg.delete().catch(() => {})).catch(() => {});
-						}).catch(() => msg.delete().catch(() => {}));
-					}).catch(() => msg.delete().catch(() => {}));
+					modules[module_name]?.getVideo(arg, SIZE_LIMIT[msg.guild.premiumTier]).then(video => {
+						if (video.upload) msg.channel.send("", new Discord.MessageAttachment(video.data, video.name)).catch(() => {});
+						else msg.channel.send(video.url).catch(() => {});
+					}).catch(() => {});
 				}
 });
 

@@ -5,7 +5,7 @@ function getVideo(url) {
 	return new Promise((resolve, reject) => {
 		TwitterVideo.getInfo(url, {}, (error, info) => {
 			if (error) return reject();
-			const video = info.variants.filter(e => e.bitrate).sort((a, b) => b.bitrate - a.bitrate)[0];
+			const video = info.variants.filter(e => e.bitrate !== undefined).sort((a, b) => b.bitrate - a.bitrate)[0];
 			if (!video) return reject();
 			resolve({ url: video.url });
 		});
