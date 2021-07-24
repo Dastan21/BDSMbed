@@ -1,6 +1,6 @@
 {
   "name": "bdsmbed",
-  "version": "2.0.0",
+  "version": "2.2.0",
   "description": "Send/upload videos from differents sources which are not embeded in Discord",
   "main": "bot.js",
   "dependencies": {
