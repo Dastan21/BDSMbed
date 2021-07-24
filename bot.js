@@ -1,6 +1,7 @@
 require('dotenv').config();
 const fs = require('fs');
 const Discord = require('discord.js');
+require('discord-reply');
 const bot = new Discord.Client();
 const SIZE_LIMIT = [8388608, 8388608, 52428800, 104857600];
 const modules = {};
@@ -19,8 +20,8 @@ bot.on('message', msg => {
 			for (const arg of args)
 				if (arg.startsWith(link) && !modules[module_name].disabled) {
 					modules[module_name]?.getVideo(arg, SIZE_LIMIT[msg.guild.premiumTier]).then(video => {
-						if (video.upload) msg.channel.send("", new Discord.MessageAttachment(video.data, video.name)).catch(() => {});
-						else msg.channel.send(video.url).catch(() => {});
+						if (video.upload) msg.lineReplyNoMention("", new Discord.MessageAttachment(video.data, video.name)).catch(() => {});
+						else msg.lineReplyNoMention(video.url).catch(() => {});
 					}).catch(() => {});
 				}
 });

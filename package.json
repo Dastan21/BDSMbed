@@ -5,6 +5,7 @@
   "main": "bot.js",
   "dependencies": {
     "axios": "^0.21.1",
+    "discord-reply": "^0.1.2",
     "discord.js": "^12.5.3",
     "dotenv": "^10.0.0",
     "fbdl-core": "^1.0.2",
