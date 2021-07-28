@@ -20,8 +20,10 @@ bot.on('message', msg => {
 			for (const arg of args)
 				if (arg.startsWith(link) && !modules[module_name].disabled) {
 					modules[module_name]?.getVideo(arg, SIZE_LIMIT[msg.guild.premiumTier]).then(video => {
-						if (video.upload) msg.lineReplyNoMention("", new Discord.MessageAttachment(video.data, video.name)).catch(() => {});
-						else msg.lineReplyNoMention(video.url).catch(() => {});
+						if (video.upload) {
+							const file = new Discord.MessageAttachment(video.data, video.name);
+							msg.lineReplyNoMention("", file).catch(() => msg.channel.send("", file).catch(() => {}));
+						} else msg.lineReplyNoMention(video.url).catch(() => msg.channel.send(video.url).catch(() => {}));
 					}).catch(() => {});
 				}
 });
